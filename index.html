@@ -74,34 +74,7 @@ body {
     box-shadow: 0 4px 16px 0 rgba(255, 182, 213, 0.25);
 }
 
-/* Preloader styles */
-#preloader {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(255,255,255,0.0); /* transparent */
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-}
-#preloader img {
-    width: 180px;
-    max-width: 80vw;
-    filter: drop-shadow(0 4px 24px #ffb6d5cc);
-    animation: logoPop 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
-#preloader .preloader-text {
-    margin-top: 1.2rem;
-    color: #ff69b4;
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 8px #fff0f6;
-    animation: fadeInUp 1.2s 0.3s both;
-}
+
 @keyframes logoPop {
     0% { opacity: 0; transform: scale(0.7); }
     100% { opacity: 1; transform: scale(1); }
@@ -138,10 +111,7 @@ body {
     </style>
 </head>
 <body>
-    <div id="preloader">
-        <img src="https://static.wikia.nocookie.net/logopedia/images/c/c0/2007_-_K-On%21_English.png" alt="K-ON! Logo">
-        <div class="preloader-text">Loading K-ON! Login...</div>
-    </div>
+    
     <div class="login-container shadow-lg" style="display:none;">
         <div class="login-title">Welcome Back!</div>
         <form id="loginForm" autocomplete="off">
@@ -157,6 +127,6 @@ body {
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="login.js"></script>
+    <script src="https://github.com/ValuedOblieg/login/blob/main/login.js"></script>
 </body>
 </html>
