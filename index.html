@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - K-ON!</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./login.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/f/ff/Houkago_tea_time_icon_black.png?20221202153415" type="image/x-icon">
+    <!-- Preloader styles moved to login.css -->
+</head>
+<body>
+    <div id="preloader">
+        <img src="https://static.wikia.nocookie.net/logopedia/images/c/c0/2007_-_K-On%21_English.png" alt="K-ON! Logo">
+        <div class="preloader-text">Loading K-ON! Login...</div>
+    </div>
+    <div class="login-container shadow-lg" style="display:none;">
+        <div class="login-title">Welcome Back!</div>
+        <form id="loginForm" autocomplete="off">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-pink w-100 mt-2">Login</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://github.com/ValuedOblieg/login/blob/main/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(OcanFun-rv0ZO.otf);
+}
+
+* {
+    font-family: myFirstFont;
+}
+
+body {
+    background: linear-gradient(135deg, #ffe0ec 0%, #e0f7fa 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid transparent;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    padding: 2.5rem 2rem 2rem 2rem;
+    max-width: 350px;
+    width: 100%;
+    animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    backdrop-filter: blur(8px);
+}
+
+.login-title {
+    color: #ff69b4;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    animation: popIn 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.form-control {
+    border-radius: 12px;
+    border: 1px solid #ffd1e3;
+    background: #fff0f6;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+.form-control:focus {
+    border-color: #ffb6d5;
+    box-shadow: 0 0 0 0.2rem rgba(255, 182, 213, 0.25);
+}
+
+.btn-pink {
+    background: linear-gradient(90deg, #ffb6d5 0%, #ff69b4 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(255, 182, 213, 0.15);
+}
+.btn-pink:hover, .btn-pink:focus {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 16px 0 rgba(255, 182, 213, 0.25);
+}
+
+/* Preloader styles */
+#preloader {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(255,255,255,0.0); /* transparent */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+#preloader img {
+    width: 180px;
+    max-width: 80vw;
+    filter: drop-shadow(0 4px 24px #ffb6d5cc);
+    animation: logoPop 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+#preloader .preloader-text {
+    margin-top: 1.2rem;
+    color: #ff69b4;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #fff0f6;
+    animation: fadeInUp 1.2s 0.3s both;
+}
+@keyframes logoPop {
+    0% { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.login-container .form-text {
+    color: #b388ff;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
