@@ -11,12 +11,10 @@
     <!-- Preloader styles moved to login.css -->
 </head>
 <body>
-
     <div id="preloader">
         <img src="https://static.wikia.nocookie.net/logopedia/images/c/c0/2007_-_K-On%21_English.png" alt="K-ON! Logo">
         <div class="preloader-text">Loading K-ON! Login...</div>
     </div>
-    
     <div class="login-container shadow-lg" style="display:none;">
         <div class="login-title">Welcome Back!</div>
         <form id="loginForm" autocomplete="off">
@@ -29,6 +27,19 @@
                 <input type="password" class="form-control" id="password" placeholder="Enter password">
             </div>
             <button type="submit" class="btn btn-pink w-100 mt-2">Login</button>
+        </form>
+        <hr class="my-4">
+        <div class="login-title" style="font-size:1.3rem; margin-bottom:1rem; color:#7c4dff;">Register</div>
+        <form id="registerForm" autocomplete="off">
+            <div class="mb-3">
+                <label for="reg-username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="reg-username" placeholder="Choose a username">
+            </div>
+            <div class="mb-3">
+                <label for="reg-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="reg-password" placeholder="Choose a password">
+            </div>
+            <button type="submit" class="btn btn-pink w-100 mt-2">Register</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
