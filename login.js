@@ -1,35 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded')
     // Preloader logic
-    const preloader = document.getElementById('preloader');
-    const loginContainer = document.querySelector('.login-container');
-    setTimeout(() => {
-        if (preloader) {
-            preloader.style.opacity = 0;
-            setTimeout(() => {
-                preloader.style.display = 'none';
-                if (loginContainer) loginContainer.style.display = '';
-            }, 700);
-        } else {
-            if (loginContainer) loginContainer.style.display = '';
-        }
-    }, 1200);
+   
 
-    // Load users from localStorage or use default demo users
-    let users = JSON.parse(localStorage.getItem('users')) || {
-        'yui': 'guitar123',
-        'mio': 'bass456',
-        'ritsu': 'drum789',
-        'mugi': 'keyboard321',
-        'azusa': 'azunyan',
-        'admin': 'konadmin'
-    };
-
-    // Save users to localStorage if not already present
-    if (!localStorage.getItem('users')) {
-        localStorage.setItem('users', JSON.stringify(users));
-    }
-
-    // Registration logic (for demo)
+    // Registration logic using Firebase Auth (fake email)
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', function(e) {
@@ -40,37 +13,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Please enter both username and password to register.', true);
                 return;
             }
-            if (users[regUsername]) {
-                showMessage('Username already exists.', true);
-                return;
-            }
-            users[regUsername] = regPassword;
-            localStorage.setItem('users', JSON.stringify(users));
-            showMessage('Registration successful! You can now log in.', false);
-            registerForm.reset();
+            const fakeEmail = regUsername + '@k-on.com';
+            firebase.auth().createUserWithEmailAndPassword(fakeEmail, regPassword)
+                .then(() => {
+                    showMessage('Registration successful! You can now log in.', false);
+                    registerForm.reset();
+                })
+                .catch(error => {
+                    if (error.code === 'auth/email-already-in-use') {
+                        showMessage('Username already exists.', true);
+                    } else if (error.code === 'auth/weak-password') {
+                        showMessage('Password should be at least 6 characters.', true);
+                    } else {
+                        showMessage(error.message, true);
+                    }
+                });
         });
     }
 
+    // Login logic using Firebase Auth (fake email)
     const form = document.getElementById('loginForm');
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
-            users = JSON.parse(localStorage.getItem('users')) || users;
             if (!username || !password) {
                 showMessage('Please enter both username and password.', true);
                 return;
             }
-            if (!users[username] || users[username] !== password) {
-                showMessage('Incorrect username or password.', true);
-                return;
-            }
-            // Show welcoming message and redirect
-            showMessage('Welcome, ' + username + '! Redirecting...', false);
-            setTimeout(() => {
-                window.location.href = 'https://valuedoblieg.github.io/k-on/';
-            }, 1500);
+            const fakeEmail = username + '@k-on.com';
+            firebase.auth().signInWithEmailAndPassword(fakeEmail, password)
+                .then(() => {
+                    showMessage('Welcome, ' + username + ' ! Redirecting...', false);
+                    setTimeout(() => {
+                        window.location.href = 'https://valuedoblieg.github.io/k-on/'; // Redirect to your main site on GitHub Pages or Firebase Hosting
+                    }, 1500);
+                })
+                .catch(error => {
+                    showMessage('Incorrect username or password.', true);
+                });
         });
     }
 
@@ -90,5 +72,4 @@ document.addEventListener('DOMContentLoaded', function() {
             msgElem.style.opacity = 1;
         }, 50);
     }
-});
 
