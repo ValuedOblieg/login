@@ -1,6 +1,18 @@
-document.addEventListener('DOMContentLoaded')
+document.addEventListener('DOMContentLoaded', function() {
     // Preloader logic
-   
+    const preloader = document.getElementById('preloader');
+    const loginContainer = document.querySelector('.login-container');
+    setTimeout(() => {
+        if (preloader) {
+            preloader.style.opacity = 0;
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                if (loginContainer) loginContainer.style.display = '';
+            }, 700);
+        } else {
+            if (loginContainer) loginContainer.style.display = '';
+        }
+    }, 1200);
 
     // Registration logic using Firebase Auth (fake email)
     const registerForm = document.getElementById('registerForm');
@@ -72,4 +84,4 @@ document.addEventListener('DOMContentLoaded')
             msgElem.style.opacity = 1;
         }, 50);
     }
-
+});
